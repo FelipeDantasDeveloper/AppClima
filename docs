@@ -1,0 +1,15 @@
+https://api.open-meteo.com/v1/forecast?
+latitude=-23.4253&
+longitude=-51.9386&
+daily=sunrise,
+sunset,
+temperature_2m_max,
+temperature_2m_min&
+hourly=temperature_2m&
+current=is_day,
+apparent_temperature,
+relative_humidity_2m,
+temperature_2m,
+precipitation,
+rain,
+weather_code&timezone=America%2FSao_Paulo
