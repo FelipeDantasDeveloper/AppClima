@@ -106,6 +106,7 @@ function appendWindDirection(
   list: HTMLDListElement,
   daily: DailyWeatherValues | undefined,
   unit: string | undefined,
+  label = 'Direção do vento',
 ): void {
   const degrees = firstValue(daily?.wind_direction_10m_dominant)
   if (degrees === undefined || !unit) {
@@ -113,7 +114,7 @@ function appendWindDirection(
   }
 
   const term = document.createElement('dt')
-  term.textContent = 'Direção do vento'
+  term.textContent = label
   const description = document.createElement('dd')
   description.textContent = `${formatNumber(degrees)} ${unit} (${getCompassDirection(degrees)})`
   list.append(term, description)
@@ -136,8 +137,13 @@ export function createWeatherPanel(
   const heading = document.createElement('h2')
   heading.id = 'weather-location'
   heading.textContent = `${location.name}, ${location.countryCode}`
-  panel.append(heading)
 
+  const layout = document.createElement('div')
+  layout.className = 'weather-result__layout'
+  const sidebar = document.createElement('aside')
+  sidebar.className = 'weather-sidebar'
+  sidebar.setAttribute('aria-labelledby', 'weather-location')
+  sidebar.append(heading)
   const summary = document.createElement('div')
   summary.className = 'weather-summary'
 
@@ -167,26 +173,45 @@ export function createWeatherPanel(
   if (current) {
     appendWeatherCondition(summary, current)
   }
-  panel.append(summary)
+  sidebar.append(summary)
+
+  const summaryMetrics = document.createElement('dl')
+  summaryMetrics.className = 'weather-metrics weather-metrics--summary'
+  appendMetric(summaryMetrics, 'Temperatura mínima', firstValue(daily?.temperature_2m_min), dailyUnits?.temperature_2m_min)
+  appendMetric(summaryMetrics, 'Temperatura máxima', firstValue(daily?.temperature_2m_max), dailyUnits?.temperature_2m_max)
+  appendMetric(summaryMetrics, 'Sensação térmica', current?.apparent_temperature, currentUnits?.apparent_temperature)
+  appendMetric(summaryMetrics, 'Vento (resumo)', firstValue(daily?.wind_speed_10m_max), dailyUnits?.wind_speed_10m_max)
+  appendWindDirection(summaryMetrics, daily, dailyUnits?.wind_direction_10m_dominant, 'Direção do vento (resumo)')
+  if (summaryMetrics.childElementCount > 0) {
+    sidebar.append(summaryMetrics)
+  }
+
+  const details = document.createElement('section')
+  details.className = 'weather-details'
+  details.setAttribute('aria-labelledby', 'weather-details-title')
+  const detailsHeading = document.createElement('h3')
+  detailsHeading.id = 'weather-details-title'
+  detailsHeading.textContent = 'Detalhes'
+  details.append(detailsHeading)
 
   const metrics = document.createElement('dl')
-  metrics.className = 'weather-metrics'
-  appendMetric(metrics, 'Sensação térmica', current?.apparent_temperature, currentUnits?.apparent_temperature)
+  metrics.className = 'weather-metrics weather-metrics--details'
   appendMetric(metrics, 'Umidade relativa', current?.relative_humidity_2m, currentUnits?.relative_humidity_2m)
-  appendMetric(metrics, 'Temperatura mínima', firstValue(daily?.temperature_2m_min), dailyUnits?.temperature_2m_min)
-  appendMetric(metrics, 'Temperatura máxima', firstValue(daily?.temperature_2m_max), dailyUnits?.temperature_2m_max)
-  appendMetric(metrics, 'Velocidade máxima do vento', firstValue(daily?.wind_speed_10m_max), dailyUnits?.wind_speed_10m_max)
-  appendWindDirection(metrics, daily, dailyUnits?.wind_direction_10m_dominant)
+  appendMetric(metrics, 'Sensação térmica', current?.apparent_temperature, currentUnits?.apparent_temperature)
   appendMetric(
     metrics,
     'Probabilidade máxima de precipitação',
     firstValue(daily?.precipitation_probability_max),
     dailyUnits?.precipitation_probability_max,
   )
+  appendMetric(metrics, 'Velocidade do vento', firstValue(daily?.wind_speed_10m_max), dailyUnits?.wind_speed_10m_max)
+  appendWindDirection(metrics, daily, dailyUnits?.wind_direction_10m_dominant)
 
   if (metrics.childElementCount > 0) {
-    panel.append(metrics)
+    details.append(metrics)
   }
 
+  layout.append(sidebar, details)
+  panel.append(layout)
   return panel
 }

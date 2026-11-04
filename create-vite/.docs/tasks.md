@@ -87,16 +87,16 @@ Este arquivo decompõe o [PRD](./prd.md) em etapas progressivas. O PRD é a font
   - {x} A condição é apresentada por texto e representação visual; código WMO desconhecido não impede a exibição dos demais dados válidos.
   - {x} Não há seção visual de previsão diária nesta versão.
 
-### T08 — Aplicar o layout responsivo e as diretrizes visuais
+### T08 — Aplicar o layout responsivo e as diretrizes visuais {x}
 
-- [ ] **Dependências:** T06 e T07.
+- {x} **Dependências:** T06 e T07.
 - **Escopo:** finalizar a composição visual e adaptar o painel para telas estreitas conforme o PRD.
 - **Referência:** PRD, seção 6 (Composição e Estados e interação) e seção 7 (Acessibilidade e Responsividade).
 - **Critérios de aprovação:**
-  - O fundo geral é cinza-escuro, a busca fica centralizada sobre o painel e não possui fundo próprio.
-  - O painel branco é centralizado, tem largura máxima de 800px, bordas bem arredondadas e agrupa barra lateral e área principal.
-  - Os dados são agrupados nas áreas indicadas pelo PRD; a repetição do vento não prejudica leitura nem hierarquia.
-  - Em viewport estreita, as áreas passam a uma coluna sem rolagem horizontal e mantêm ordem de leitura e contraste legíveis.
+  - {x} O fundo geral é cinza-escuro, a busca fica centralizada sobre o painel e não possui fundo próprio.
+  - {x} O painel branco é centralizado, tem largura máxima de 800px, bordas bem arredondadas e agrupa barra lateral e área principal.
+  - {x} Os dados são agrupados nas áreas indicadas pelo PRD; a repetição do vento não prejudica leitura nem hierarquia.
+  - {x} Em viewport estreita, as áreas passam a uma coluna sem rolagem horizontal e mantêm ordem de leitura e contraste legíveis.
 
 ### T09 — Validar o fluxo completo e os critérios de aceite
 
