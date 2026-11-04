@@ -40,7 +40,7 @@ npm run preview
 
 ## Publicação no GitHub Pages
 
-O workflow [Deploy to GitHub Pages](.github/workflows/deploy.yml) constrói e publica o site automaticamente quando há um push para a branch `main`. Também pode ser iniciado manualmente pela aba **Actions** do GitHub.
+O workflow [Deploy to GitHub Pages](../.github/workflows/deploy.yml), localizado na raiz do repositório, constrói o projeto desta pasta e publica o site automaticamente quando há um push para a branch `main`. Também pode ser iniciado manualmente pela aba **Actions** do GitHub.
 
 Para habilitar a publicação no repositório, configure:
 
@@ -53,11 +53,11 @@ O workflow configura o caminho base do repositório durante o build e publica o 
 ## Estrutura principal
 
 ```text
-src/
-  domain/      Tipos e utilitários meteorológicos
-  services/    Integração com as APIs Open-Meteo
-  ui/          Interface, estilos e painel de clima
-.github/
-  workflows/   Automação de build e deploy
+App Clima/
+  .github/workflows/  Automação de build e deploy (raiz do repositório)
+  create-vite/
+    src/
+      domain/         Tipos e utilitários meteorológicos
+      services/       Integração com as APIs Open-Meteo
+      ui/             Interface, estilos e painel de clima
 ```
-
