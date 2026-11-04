@@ -14,6 +14,15 @@ const CURRENT_VARIABLES =
 const DAILY_VARIABLES =
   'weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,daylight_duration,sunshine_duration,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant,precipitation_probability_max'
 
+export type WeatherSearchResult =
+  | {
+      status: 'success'
+      location: Location
+      weather: OpenMeteoForecastResponse
+    }
+  | { status: 'not-found' }
+  | { status: 'error'; error: unknown }
+
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null
 }
@@ -240,5 +249,23 @@ export async function getWeather(
     current_units: readCurrentUnits(payload.current_units),
     daily: readDaily(payload.daily),
     daily_units: readDailyUnits(payload.daily_units),
+  }
+}
+
+export async function searchWeather(cityName: string): Promise<WeatherSearchResult> {
+  try {
+    const location = await searchLocation(cityName)
+    if (!location) {
+      return { status: 'not-found' }
+    }
+
+    const weather = await getWeather(location)
+    if (!weather) {
+      return { status: 'not-found' }
+    }
+
+    return { status: 'success', location, weather }
+  } catch (error: unknown) {
+    return { status: 'error', error }
   }
 }

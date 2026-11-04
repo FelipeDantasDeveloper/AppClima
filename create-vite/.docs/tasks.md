@@ -54,16 +54,16 @@ Este arquivo decompõe o [PRD](./prd.md) em etapas progressivas. O PRD é a font
   - {x} Parâmetros ausentes/inválidos impedem a requisição e resultam em ausência de dados utilizáveis.
   - {x} Resposta sem dados atuais utilizáveis resulta em ausência de dados; falha HTTP/rede é propagada como erro.
 
-### T05 — Orquestrar o fluxo único de busca
+### T05 — Orquestrar o fluxo único de busca {x}
 
-- [ ] **Dependências:** T03 e T04.
+- {x} **Dependências:** T03 e T04.
 - **Escopo:** conectar a geocodificação à consulta meteorológica em uma operação de busca, distinguindo sucesso, ausência de resultado e erro.
 - **Referência:** PRD, seções 4 (RF-01 a RF-03 e RF-06), 5 (Fronteira de acesso à API) e critérios de aceite 1, 4, 5 e 7.
 - **Critérios de aprovação:**
-  - A consulta meteorológica só ocorre após obter uma localização completa e válida.
-  - Ausência de localização ou clima utilizável produz estado sem resultado, sem dados parciais apresentados como sucesso.
-  - Erros de rede/API permanecem distinguíveis de ausência de resultado.
-  - A camada de interface pode acompanhar a operação inteira como um único estado de carregamento.
+  - {x} A consulta meteorológica só ocorre após obter uma localização completa e válida.
+  - {x} Ausência de localização ou clima utilizável produz estado sem resultado, sem dados parciais apresentados como sucesso.
+  - {x} Erros de rede/API permanecem distinguíveis de ausência de resultado.
+  - {x} A camada de interface pode acompanhar a operação inteira como um único estado de carregamento.
 
 ### T06 — Criar busca e estados da interface
 
