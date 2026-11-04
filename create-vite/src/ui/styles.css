@@ -19,3 +19,132 @@ body {
 #app {
   min-height: 100vh;
 }
+
+#weather-app {
+  width: min(100% - 32px, 800px);
+  margin: 0 auto;
+  padding: 48px 0;
+  color: #17212b;
+}
+
+.search-header {
+  text-align: center;
+}
+
+.search-header h1 {
+  margin: 0 0 24px;
+  font-size: clamp(2rem, 6vw, 3rem);
+}
+
+#city-search {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+#city-search label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.search-controls {
+  display: flex;
+  gap: 12px;
+}
+
+.search-controls input {
+  min-width: 0;
+  flex: 1;
+  padding: 12px 14px;
+  border: 1px solid #87939e;
+  border-radius: 8px;
+  background: #fff;
+  color: inherit;
+  font: inherit;
+}
+
+.search-controls button {
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 8px;
+  background: #176b87;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.search-controls button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.search-controls input:focus-visible,
+.search-controls button:focus-visible {
+  outline: 3px solid #e39b2f;
+  outline-offset: 3px;
+}
+
+#search-feedback {
+  min-height: 72px;
+  margin: 24px auto 0;
+  text-align: center;
+}
+
+#search-guidance,
+.search-message {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.search-message {
+  font-weight: 600;
+}
+
+.search-message--loading::before {
+  content: '';
+  display: inline-block;
+  width: 0.8em;
+  height: 0.8em;
+  margin-right: 10px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  vertical-align: -0.08em;
+  animation: search-spinner 0.8s linear infinite;
+}
+
+.search-message--empty {
+  color: #664600;
+}
+
+.search-message--error {
+  color: #9c2525;
+}
+
+.search-message--success {
+  color: #245c3b;
+}
+
+@keyframes search-spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .search-message--loading::before {
+    animation: none;
+  }
+}
+
+@media (max-width: 480px) {
+  #weather-app {
+    padding-top: 32px;
+  }
+
+  .search-controls {
+    flex-direction: column;
+  }
+}
