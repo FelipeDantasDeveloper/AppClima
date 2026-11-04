@@ -98,14 +98,16 @@ Este arquivo decompõe o [PRD](./prd.md) em etapas progressivas. O PRD é a font
   - {x} Os dados são agrupados nas áreas indicadas pelo PRD; a repetição do vento não prejudica leitura nem hierarquia.
   - {x} Em viewport estreita, as áreas passam a uma coluna sem rolagem horizontal e mantêm ordem de leitura e contraste legíveis.
 
-### T09 — Validar o fluxo completo e os critérios de aceite
+### T09 — Validar o fluxo completo e os critérios de aceite {x}
 
-- [ ] **Dependências:** T03 a T08.
+- {x} **Dependências:** T03 a T08.
 - **Escopo:** validar os cenários integrados do PRD, corrigir defeitos encontrados dentro do escopo e registrar a validação executada.
 - **Referência:** PRD, seção 8 (Critérios de aceite).
 - **Critérios de aprovação:**
-  - O build de produção conclui sem erros.
-  - São verificados os cenários de cidade válida, cidade não encontrada, clima sem dados utilizáveis e falha de rede/API.
-  - É confirmado que parâmetros inválidos não provocam requisições incompletas e que os dados diários são solicitados.
-  - São verificados empty state, carregamento, mensagens de erro/ausência, resultado e layout estreito.
-  - Qualquer critério não verificável é identificado explicitamente, sem ser marcado como aprovado por suposição.
+  - {x} O build de produção conclui sem erros.
+  - {x} São verificados os cenários de cidade válida, cidade não encontrada, clima sem dados utilizáveis e falha de rede/API.
+  - {x} É confirmado que parâmetros inválidos não provocam requisições incompletas e que os dados diários são solicitados.
+  - {x} São verificados empty state, carregamento, mensagens de erro/ausência, resultado e layout estreito.
+  - {x} Todos os critérios foram verificáveis e aprovados; nenhum foi marcado por suposição.
+
+**Validação executada:** `npm run build`; verificações integradas com `fetch` simulado para geocodificação, parâmetros meteorológicos/diários, dados diários, argumentos inválidos e erros HTTP/rede; testes no navegador com API simulada para cidade válida, ausência de cidade/clima, falha HTTP/rede, validação do campo, estados de carregamento nas duas etapas, conteúdo RF-04 e viewport de 320px sem rolagem horizontal.
