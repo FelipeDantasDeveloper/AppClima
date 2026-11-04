@@ -21,27 +21,27 @@ Este arquivo decompõe o [PRD](./prd.md) em etapas progressivas. O PRD é a font
   - {x} Há uma estrutura clara para código de domínio, acesso à API e interface, seguindo as convenções já presentes no projeto.
   - {x} O comando de build existente conclui sem erros.
 
-### T02 — Definir os tipos e utilitários meteorológicos
+### T02 — Definir os tipos e utilitários meteorológicos {x}
 
-- [ ] **Dependências:** T01.
+- {x} **Dependências:** T01.
 - **Escopo:** definir os tipos dos dados de localização e das respostas atuais/diárias necessários ao app; implementar a conversão de `weather_code` para as descrições do PRD e um fallback para código desconhecido.
 - **Referência:** PRD, seções 4 (RF-04 e RF-05), 5 (estrutura da resposta e mapeamento WMO) e 7 (Confiabilidade e Manutenibilidade).
 - **Critérios de aprovação:**
-  - Os tipos representam os campos usados pela aplicação sem depender de `any`.
-  - Todos os códigos e descrições WMO listados no PRD são reconhecidos.
-  - Um código desconhecido retorna uma descrição genérica e não lança erro.
-  - O build conclui sem erros.
+  - {x} Os tipos representam os campos usados pela aplicação sem depender de `any`.
+  - {x} Todos os códigos e descrições WMO listados no PRD são reconhecidos.
+  - {x} Um código desconhecido retorna uma descrição genérica e não lança erro.
+  - {x} O build conclui sem erros.
 
-### T03 — Implementar a busca de localização
+### T03 — Implementar a busca de localização {x}
 
-- [ ] **Dependências:** T02.
+- {x} **Dependências:** T02.
 - **Escopo:** criar a função de geocodificação encapsulada, incluindo validação de entrada, montagem segura da URL e extração dos dados requeridos.
 - **Referência:** PRD, seções 4 (RF-02), 5 (Fronteira de acesso à API e Etapa 1 — Geocodificação) e critério de aceite 6.
 - **Critérios de aprovação:**
-  - Uma entrada válida gera uma consulta com `name`, `count=1`, `language=pt` e `format=json`.
-  - O resultado utilizável contém nome, latitude, longitude, timezone e código do país.
-  - Entrada vazia/inválida ou ausência de resultados não gera chamada incompleta e retorna ausência de resultado de forma explícita.
-  - Falha de rede ou resposta HTTP inválida é propagada como erro, não convertida em ausência de resultado.
+  - {x} Uma entrada válida gera uma consulta com `name`, `count=1`, `language=pt` e `format=json`.
+  - {x} O resultado utilizável contém nome, latitude, longitude, timezone e código do país.
+  - {x} Entrada vazia/inválida ou ausência de resultados não gera chamada incompleta e retorna ausência de resultado de forma explícita.
+  - {x} Falha de rede ou resposta HTTP inválida é propagada como erro, não convertida em ausência de resultado.
 
 ### T04 — Implementar a consulta de clima
 
