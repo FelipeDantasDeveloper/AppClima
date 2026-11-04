@@ -1,4 +1,5 @@
 import { searchWeather } from '../services/openMeteo'
+import { createWeatherPanel } from './weatherPanel'
 
 export function mountApp(root: HTMLElement): void {
   root.innerHTML = `
@@ -57,6 +58,7 @@ export function mountApp(root: HTMLElement): void {
     }
 
     isSearching = true
+    root.querySelector('#weather-result')?.remove()
     input.disabled = true
     button.disabled = true
     button.textContent = 'Buscando...'
@@ -84,7 +86,11 @@ export function mountApp(root: HTMLElement): void {
       }
 
       status.className = 'search-message search-message--success'
-      status.textContent = `Consulta concluída para ${result.location.name}, ${result.location.countryCode}.`
+      status.textContent = `Clima atualizado para ${result.location.name}, ${result.location.countryCode}.`
+      root.querySelector('#weather-result')?.remove()
+      root.querySelector('#weather-app')?.append(
+        createWeatherPanel(result.location, result.weather),
+      )
     } finally {
       isSearching = false
       input.disabled = false

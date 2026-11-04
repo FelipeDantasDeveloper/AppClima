@@ -65,27 +65,27 @@ Este arquivo decompõe o [PRD](./prd.md) em etapas progressivas. O PRD é a font
   - {x} Erros de rede/API permanecem distinguíveis de ausência de resultado.
   - {x} A camada de interface pode acompanhar a operação inteira como um único estado de carregamento.
 
-### T06 — Criar busca e estados da interface
+### T06 — Criar busca e estados da interface {x}
 
-- [ ] **Dependências:** T01 e T05.
+- {x} **Dependências:** T01 e T05.
 - **Escopo:** implementar o campo de cidade e os estados inicial, carregando, sem resultado e erro, ligados ao fluxo de busca.
 - **Referência:** PRD, seções 4 (RF-01 e RF-06), 6 (Estados e interação) e 7 (Acessibilidade).
 - **Critérios de aprovação:**
-  - A busca pode ser enviada por teclado e por controle visível, com campo acessivelmente rotulado.
-  - O carregamento permanece visível durante todo o fluxo de duas etapas e impede envios concorrentes confusos.
-  - Empty state, ausência de resultado e erro têm mensagens distintas e compreensíveis.
-  - Estados e mensagens são anunciáveis por tecnologia assistiva; nenhum deles depende somente de cor ou ícone.
+  - {x} A busca pode ser enviada por teclado e por controle visível, com campo acessivelmente rotulado.
+  - {x} O carregamento permanece visível durante todo o fluxo de duas etapas e impede envios concorrentes confusos.
+  - {x} Empty state, ausência de resultado e erro têm mensagens distintas e compreensíveis.
+  - {x} Estados e mensagens são anunciáveis por tecnologia assistiva; nenhum deles depende somente de cor ou ícone.
 
-### T07 — Apresentar os dados meteorológicos
+### T07 — Apresentar os dados meteorológicos {x}
 
-- [ ] **Dependências:** T02, T05 e T06.
+- {x} **Dependências:** T02, T05 e T06.
 - **Escopo:** implementar o painel de resultado com os dados atuais definidos no PRD e unidades correspondentes; não criar seção visual de previsão diária.
 - **Referência:** PRD, seções 2 (Fora do escopo), 4 (RF-04 e RF-05), 5 (unidades e códigos WMO) e 6 (Composição).
 - **Critérios de aprovação:**
-  - O painel apresenta todos os dados de RF-04: temperatura, cidade/código do país, dia local, dia/noite, condição, vento, mínima/máxima, sensação térmica, umidade e probabilidade de precipitação.
-  - Unidades são mostradas junto aos valores; valores ausentes não são exibidos como reais.
-  - A condição é apresentada por texto e representação visual; código WMO desconhecido não impede a exibição dos demais dados válidos.
-  - Não há seção visual de previsão diária nesta versão.
+  - {x} O painel apresenta todos os dados de RF-04: temperatura, cidade/código do país, dia local, dia/noite, condição, vento, mínima/máxima, sensação térmica, umidade e probabilidade de precipitação.
+  - {x} Unidades são mostradas junto aos valores; valores ausentes não são exibidos como reais.
+  - {x} A condição é apresentada por texto e representação visual; código WMO desconhecido não impede a exibição dos demais dados válidos.
+  - {x} Não há seção visual de previsão diária nesta versão.
 
 ### T08 — Aplicar o layout responsivo e as diretrizes visuais
 
