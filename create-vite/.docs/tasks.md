@@ -43,16 +43,16 @@ Este arquivo decompõe o [PRD](./prd.md) em etapas progressivas. O PRD é a font
   - {x} Entrada vazia/inválida ou ausência de resultados não gera chamada incompleta e retorna ausência de resultado de forma explícita.
   - {x} Falha de rede ou resposta HTTP inválida é propagada como erro, não convertida em ausência de resultado.
 
-### T04 — Implementar a consulta de clima
+### T04 — Implementar a consulta de clima {x}
 
-- [ ] **Dependências:** T02.
+- {x} **Dependências:** T02.
 - **Escopo:** criar a função encapsulada para consultar dados atuais e diários, validar coordenadas/fuso e interpretar valores e unidades.
 - **Referência:** PRD, seções 4 (RF-03 e RF-05), 5 (Fronteira de acesso à API e Etapa 2 — Consulta meteorológica) e critérios de aceite 2, 5, 6 e 8.
 - **Critérios de aprovação:**
-  - A URL usa `latitude`, `longitude` e `timezone` corretos e solicita todas as variáveis atuais e diárias especificadas no PRD.
-  - A função lê valores e unidades dos objetos apropriados e não presume arrays diários válidos.
-  - Parâmetros ausentes/inválidos impedem a requisição e resultam em ausência de dados utilizáveis.
-  - Resposta sem dados atuais utilizáveis resulta em ausência de dados; falha HTTP/rede é propagada como erro.
+  - {x} A URL usa `latitude`, `longitude` e `timezone` corretos e solicita todas as variáveis atuais e diárias especificadas no PRD.
+  - {x} A função lê valores e unidades dos objetos apropriados e não presume arrays diários válidos.
+  - {x} Parâmetros ausentes/inválidos impedem a requisição e resultam em ausência de dados utilizáveis.
+  - {x} Resposta sem dados atuais utilizáveis resulta em ausência de dados; falha HTTP/rede é propagada como erro.
 
 ### T05 — Orquestrar o fluxo único de busca
 
